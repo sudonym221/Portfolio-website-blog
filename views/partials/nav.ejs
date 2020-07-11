@@ -1,6 +1,7 @@
 <nav>
     <div class="site-title">
-        <a href="/"><h2>Deepjyoti Chetia</h2></a>
+        <img id="theme-toggle" src="/dark.svg" height="45px" width="45px" title="Dark mode">
+        <a href="/"><h2>Deepjyoti Chetia</h2></a> 
         <p>Some stuff</p>
     </div>
     <ul class="navUl">
@@ -9,3 +10,33 @@
         <li><a href="/blog/create">New blog</a></li>
     </ul>
 </nav>
+
+<script>
+
+    //localStorage.setItem('theme', 'dark-theme.css');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const themeStylesheet = document.getElementById('theme');
+        const storedTheme = localStorage.getItem('theme');
+        if(storedTheme){
+            themeStylesheet.href = storedTheme;
+        }
+        const themetoggle = document.getElementById('theme-toggle');
+
+        themetoggle.addEventListener('click', () => {
+            if(themeStylesheet.href.includes('light')){
+                themeStylesheet.href = '/dark-theme.css';
+                themetoggle.src = '/light.svg';
+                themetoggle.title = "Light mode";
+            }
+            else{ 
+                themeStylesheet.href = '/light-theme.css';
+                themetoggle.src = '/dark.svg';
+                themetoggle.title = "Dark mode";
+            }  
+            localStorage.setItem('theme',themeStylesheet.href)
+        })
+        
+    })
+
+</script>

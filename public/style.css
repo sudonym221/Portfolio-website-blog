@@ -58,6 +58,11 @@
         .site-title a:hover h2{
             color: crimson;
           }
+        .site-title img{
+          display: block;
+          float: right;
+          margin-right: -280%;
+        }
         /* index styles */
         .blogs a{
             display: block;
