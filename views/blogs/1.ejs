@@ -13,8 +13,9 @@
                 <% blogs.forEach(blog => { %>
                 <a class="single" href="/blog/<%= blog._id %>">
                   <br>
-                  <h3 class="title"><%= blog.title %></h3>
+                  <h3 class=""><%= blog.title %></h3>  
                   <p class="snippet"><%= blog.snippet %></p>
+                  <h5 class="title">Written in <%= blog.createdAt.toDateString() %></h5>
                 </a>
                 <% }) %>
               <% } else { %>
