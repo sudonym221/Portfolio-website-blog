@@ -8,6 +8,7 @@ const blog_index = (req, res) => {
     })
     .catch((err) => {
         res.send(err);
+        console.log(err)
     })
 }
 

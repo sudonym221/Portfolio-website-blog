@@ -25,7 +25,7 @@ app.use(morgan('tiny'))
 
 // Site routes
 app.get('/', (req, res) => {
-    res.redirect('/blog');
+    res.render('home.ejs', {title : 'Home'});
 });
 
 app.get('/about', (req, res) => {
@@ -33,7 +33,7 @@ app.get('/about', (req, res) => {
 });
 
 // Blog routes
-app.use('/blog', blogRouter);
+app.use(blogRouter);
 
 // 404 page
 app.use((req, res) => {
