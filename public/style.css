@@ -40,7 +40,7 @@
         footer{
           color: #777;
           text-align: center;
-          margin: 80px auto 20px;
+          margin: 25px auto 20px;
         }
         h2{
           margin-bottom: 40px;
@@ -78,7 +78,17 @@
           .blogs a:hover h3{
             color: crimson;
           }
-        /* details styles */
+        /* Footer styles */
+        .contact-me{
+          margin-top: 150px;
+          margin-left: 520px;
+        }
+        .contact-me li{
+          display: inline;
+        }
+        .contact-me a{
+          padding: 10px;
+        }
         /* create styles */
         .create-blog form{
           max-width: 400px;
