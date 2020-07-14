@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
         body{
           max-width: 1200px;
           margin: 20px auto;
@@ -16,10 +17,11 @@
         nav{
           display: flex;
           justify-content: space-between;
+          margin-top: 100px;
           margin-bottom: 60px;
           padding-bottom: 10px;
           border-bottom: 1px solid #ddd;
-          text-transform: uppercase;
+          /* text-transform: uppercase; */
         }
         nav ul{
           display: flex;
@@ -58,10 +60,13 @@
         .site-title a:hover h2{
             color: crimson;
           }
+        .site-title {
+          position: relative;
+        }
         .site-title img{
-          display: block;
-          float: right;
-          margin-right: -280%;
+          position: absolute;
+          /* left: 1000px; */
+          
         }
         .title{
           opacity: 0.7;
@@ -75,7 +80,7 @@
             padding-left: 30px;
             border-left: 6px solid crimson;
           }
-          .blogs a:hover h3{
+        .blogs a:hover h3{
             color: crimson;
           }
         /* Footer styles */
@@ -116,4 +121,9 @@
           border: 0;
           font-size: 1.2em;
           cursor: pointer;
+        }
+        /*Homepage*/
+        .home {
+          font-family: 'Inconsolata', monospace;
+          font-size: 27px;
         }

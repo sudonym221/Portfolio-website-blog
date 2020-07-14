@@ -2,6 +2,7 @@ const express = require("express");
 var morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRouter = require('./routes/blogRoutes.js');
+const workRouter = require('./routes/workRoutes.js');
 
 
 // Express app
@@ -33,7 +34,16 @@ app.get('/about', (req, res) => {
 });
 
 // Blog routes
-app.use(blogRouter);
+app.use(blogRouter, function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+  });
+
+// Work routes
+app.use(workRouter, function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+  });    
 
 // 404 page
 app.use((req, res) => {
