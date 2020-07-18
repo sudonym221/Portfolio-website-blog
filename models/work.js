@@ -12,14 +12,12 @@ const workSchema = new Schema({
         required: true
 
     },
-    description: String,
-    icon: {
-        type: 'Buffer',
-        required: true
-    },
-    screenshots:{
-        type: ['Buffer']
-    }
-}, { timestamps : true });
+    description: { type: String },
+    contentTypeIcon: { type: String },
+    contentTypeSS: [String],
+    destination: { type: String }
+}, {
+    timestamps: true
+});
 const Work = mongoose.model('Work', workSchema)
 module.exports = Work;

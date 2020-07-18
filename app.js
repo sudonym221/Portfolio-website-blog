@@ -3,6 +3,7 @@ var morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRouter = require('./routes/blogRoutes.js');
 const workRouter = require('./routes/workRoutes.js');
+const bodyParser = require('body-parser');
 
 
 // Express app
@@ -22,6 +23,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded( {extended: true} ));
 app.use(morgan('tiny'))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 
 // Site routes
