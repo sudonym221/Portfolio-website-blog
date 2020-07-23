@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs')%>
+<body>
+
+    <%- include('../partials/nav.ejs')%>
+
+    <div class="blogs content">
+        <h2>All Projects</h2>
+
+        <div>
+            <% if (work.length > 0) { %>
+                <% work.forEach(works => { %>
+                <a class="single" href="/works/<%= works._id %>">
+                  <br>
+                  <h3 class=""><%= works.title %></h3>  
+                  <p class="snippet"><%= works.snippet %></p>
+                  <h5 class="title">Written in <%= works.createdAt.toDateString() %></h5>
+                </a>
+                <% }) %>
+              <% } else { %>
+                <p>There are no projects to display...</p>
+              <% } %>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>
+</body>
+</html>

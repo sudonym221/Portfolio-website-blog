@@ -1,18 +1,22 @@
 const express = require("express");
+// require('dotenv').config();
 var morgan = require('morgan');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
+// Routers
 const blogRouter = require('./routes/blogRoutes.js');
 const workRouter = require('./routes/workRoutes.js');
-const bodyParser = require('body-parser');
+
 
 
 // Express app
 const app = express();
 
 // Connect to mongodb
-const mongoURI = 'mongodb+srv://deep:XeU05a@cluster0.0isbr.mongodb.net/node-ninja?retryWrites=true&w=majority';
+const mongoURI = 'mongodb://127.0.0.1:27017/Deepjyoti_Chetia';
 mongoose.connect(mongoURI, {useNewUrlParser : true, useUnifiedTopology : true} )
-    .then( (result) => app.listen(3004))
+    .then( result => app.listen(3000))
     .catch( (err) => console.log(err));
 
 // register view engine
@@ -47,7 +51,7 @@ app.use(workRouter, function (req, res, next) {
     next()
   });    
 
-// 404 page
+//404 page
 app.use((req, res) => {
     res.status(404).render('1-404.ejs', { title : '404'})
 })

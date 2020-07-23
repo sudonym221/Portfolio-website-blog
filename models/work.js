@@ -13,9 +13,6 @@ const workSchema = new Schema({
 
     },
     description: { type: String },
-    contentTypeIcon: { type: String },
-    contentTypeSS: [String],
-    destination: { type: String }
 }, {
     timestamps: true
 });
