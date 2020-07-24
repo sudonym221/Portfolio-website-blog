@@ -4,6 +4,8 @@ var morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const Admin = require('./models/admin.js');
+
 // Routers
 const blogRouter = require('./routes/blogRoutes.js');
 const workRouter = require('./routes/workRoutes.js');
@@ -37,6 +39,38 @@ app.get('/', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('1-a.ejs', {title : 'About me'})
+});
+
+app.get('/admin', (req, res) => {
+    res.render('adminLogin.ejs', {title : 'Admin Login'})
+})
+
+// app.get('/adminReg', (req, res) => {
+//     res.render('adminReg.ejs')
+// })
+
+// app.post('/newAdmin', (req, res) => {
+//     const admin = new Admin( {password : req.body.password} );
+
+//     admin.save()
+//     .then(result => { res.send('Success') })
+//     .catch(err => { return res.status(404).send() })
+// })
+
+app.post('/admin', async (req, res) => {
+    let pass = req.body.password;
+
+    const adminYes = await Admin.findOne({ password : pass }).exec()
+
+    try{
+        if(!adminYes){
+            res.redirect('/admin');
+        }
+        res.render('admin.ejs', { title: 'Hi admin'});
+    }
+    catch(e) {
+        res.status(500).send()
+    }    
 });
 
 // Blog routes
