@@ -13,6 +13,7 @@ const workSchema = new Schema({
 
     },
     description: { type: String },
+    imageUrlCloud : { type: String}
 }, {
     timestamps: true
 });

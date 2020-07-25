@@ -2,15 +2,12 @@ const express = require("express");
 // require('dotenv').config();
 var morgan = require('morgan');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
 const Admin = require('./models/admin.js');
 
 // Routers
 const blogRouter = require('./routes/blogRoutes.js');
 const workRouter = require('./routes/workRoutes.js');
-
-
 
 // Express app
 const app = express();
@@ -29,7 +26,6 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded( {extended: true} ));
 app.use(morgan('tiny'))
-app.use(bodyParser.urlencoded({ extended: false }))
 
 
 // Site routes

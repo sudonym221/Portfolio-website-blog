@@ -51,7 +51,7 @@
           margin-left: 20px;
         }
 
-        /* index styles */
+        /* Blogs styles */
         .blogs a{
             display: block;
             margin: 40px 0;
@@ -106,4 +106,19 @@
         .home {
           font-family: 'Inconsolata', monospace;
           font-size: 27px;
+        }
+        /* Works index*/
+        .works {
+          display: flex;
+          justify-content: space-between;
+          flex-flow: row wrap;
+          margin: 40px 0px;
+          padding-left: 30px;
+        }
+        .data{
+          max-width: 800px;
+          align-self: flex-start;
+        }
+        .iconImg{
+          align-self: flex-end;
         }
