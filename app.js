@@ -3,7 +3,11 @@ const express = require("express");
 var morgan = require('morgan');
 const mongoose = require('mongoose');
 
-const Admin = require('./models/admin.js');
+const {Admin} = require('./models/admin.js');
+const {auth} = require('./models/admin.js');
+var jwt = require('jsonwebtoken');
+const {LocalStorage} = require('node-localstorage');
+var localStorage = new LocalStorage('./scratch');
 
 // Routers
 const blogRouter = require('./routes/blogRoutes.js');
@@ -33,7 +37,7 @@ app.get('/', (req, res) => {
     res.render('home.ejs', {title : 'Home'});
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', auth, (req, res) => {
     res.render('1-a.ejs', {title : 'About me'})
 });
 
@@ -62,6 +66,9 @@ app.post('/admin', async (req, res) => {
         if(!adminYes){
             res.redirect('/admin');
         }
+        var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+        localStorage.setItem('Authorization', token);
+
         res.render('admin.ejs', { title: 'Hi admin'});
     }
     catch(e) {
