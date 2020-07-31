@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif&family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
         body{
           max-width: 1200px;
           margin: 20px auto;
           padding: 0 20px;
-          font-family: 'Noto Serif', serif;
-          font-family: 'Open Sans', sans-serif;
+          font-family: 'Ubuntu', sans-serif;
+          /* font-family: 'Noto Serif', serif;
+          font-family: 'Open Sans', sans-serif; */
         }
         p, h1, h2, h3, a, ul{
           margin: 0;
@@ -104,7 +104,7 @@
         }
         /*Homepage*/
         .home {
-          font-family: 'Inconsolata', monospace;
+          /* font-family: 'Inconsolata', monospace; */
           font-size: 27px;
         }
         /* Works index*/
@@ -112,13 +112,60 @@
           display: flex;
           justify-content: space-between;
           flex-flow: row wrap;
+          max-width: 1100;
           margin: 40px 0px;
           padding-left: 30px;
+          box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.19);
+          border-radius: 10px;
+          font-size: 24px;
+          /* font-family: 'Inconsolata', monospace; */
         }
         .data{
-          max-width: 800px;
+          max-width: 700px;
+          font-size: 1em;
           align-self: flex-start;
+          padding-bottom: 20px;
+        }
+        .data h3 {
+          padding-bottom: 15px;
+        }
+        .data p {
+          padding: 10px;
         }
         .iconImg{
           align-self: flex-end;
+          padding-bottom: 25px;
+          padding-right: 25px;
+          border-radius: 25px;
+        }
+
+        /* Dark mode */
+
+        body {
+          --text-color: #222;
+          --bkg-color: #fff;
+        }
+        body.dark-theme {
+          --text-color: #eee;
+          --bkg-color: #121212;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+          /* defaults to dark theme */
+          body {
+            --text-color: #eee;
+            --bkg-color: #161625;
+          }
+          body.light-theme {
+            --text-color: #222;
+            --bkg-color: #fff;
+          }
+        }
+        
+        body {
+          background: var(--bkg-color);
+        }
+        
+        p, h1, h2, h3, a, ul {
+          color: var(--text-color);
         }
