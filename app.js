@@ -16,7 +16,7 @@ const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cl
 //const mongoURI = 'mongodb://127.0.0.1:27017/Deepjyoti_Chetia';
 
 mongoose.connect(mongoURI, {useNewUrlParser : true, useUnifiedTopology : true} )
-    .then( result => app.listen(4000))
+    .then( result => app.listen(process.env.PORT))
     .catch( (err) => console.log(err));
 
 // register view engine
