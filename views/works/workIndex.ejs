@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs')%>
+<body>
+
+    <%- include('../partials/nav.ejs')%>
+
+    <h2>All Projects</h2>
+    <div>
+            <% if (work.length > 0) { %>
+                <% work.forEach(works => { %>
+                  <div class="works">
+                    <div class="data">
+                      <br>
+                      <h3 class=""><%= works.title %></h3>  
+                      <p class="snippet"><%= works.description %></p>
+                    </div>
+                    <div class="iconImg">
+                      <img id="iconImg" width="250px" height="250px" src=<%= works.imageUrlCloud %> alt="Icon">
+                    </div>
+                  </div>
+                <% }) %>
+              <% } else { %>
+                <p>There are no projects to display...</p>
+              <% } %>
+    </div>
+    <%- include('../partials/footer.ejs')%>
+</body>
+</html>

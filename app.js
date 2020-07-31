@@ -1,16 +1,22 @@
 const express = require("express");
+require('dotenv').config();
 var morgan = require('morgan');
 const mongoose = require('mongoose');
-const blogRouter = require('./routes/blogRoutes.js');
 
+// Routers
+const blogRouter = require('./routes/blogRoutes.js');
+const workRouter = require('./routes/workRoutes.js');
+const adminRouter = require('./routes/adminRoutes.js');
 
 // Express app
 const app = express();
 
 // Connect to mongodb
-const mongoURI = 'mongodb+srv://deep:XeU05a@cluster0.0isbr.mongodb.net/node-ninja?retryWrites=true&w=majority';
+const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0isbr.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+//const mongoURI = 'mongodb://127.0.0.1:27017/Deepjyoti_Chetia';
+
 mongoose.connect(mongoURI, {useNewUrlParser : true, useUnifiedTopology : true} )
-    .then( (result) => app.listen(3004))
+    .then( result => app.listen(4000))
     .catch( (err) => console.log(err));
 
 // register view engine
@@ -25,17 +31,28 @@ app.use(morgan('tiny'))
 
 // Site routes
 app.get('/', (req, res) => {
-    res.redirect('/blog');
-});
-
-app.get('/about', (req, res) => {
-    res.render('1-a.ejs', {title : 'About me'})
+    res.render('home.ejs', {title : 'Home'});
 });
 
 // Blog routes
-app.use('/blog', blogRouter);
+app.use(blogRouter, function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+  });
 
-// 404 page
+// Work routes
+app.use(workRouter, function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+  }); 
+
+// Admin routes
+app.use(adminRouter, function (req, res, next) {
+    console.log('Time:', Date.now())
+    next()
+  });
+
+//404 page
 app.use((req, res) => {
     res.status(404).render('1-404.ejs', { title : '404'})
 })
