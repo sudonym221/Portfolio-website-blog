@@ -1,7 +1,4 @@
 const {Admin} = require('../models/admin.js');
-var jwt = require('jsonwebtoken');
-const {LocalStorage} = require('node-localstorage');
-var localStorage = new LocalStorage('./scratch');
 
 const get_admin_page = (req, res) => {
     res.render('adminLogin.ejs', {title : 'Admin Login'})
@@ -16,9 +13,8 @@ const authAdmin = async (req, res) => {
         if(!adminYes){
             res.redirect('/admin');
         }
-        var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-        localStorage.setItem('Authorization', token);
-
+        var token = adminYes.generateAuthToken();
+        res.cookie('token_admin', `${token}`, {domain: 'https://deepjyoti-portfolio.herokuapp.com/',secure: true, expires: new Date(Date.now() + 9000000), httpOnly: true })
         res.render('admin.ejs', { title: 'Hi admin'});
     }
     catch(e) {
