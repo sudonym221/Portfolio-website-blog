@@ -105,7 +105,14 @@
         /*Homepage*/
         .home {
           /* font-family: 'Inconsolata', monospace; */
-          font-size: 27px;
+          font-size: 1.2em;
+          line-height: 1.6;
+        }
+        .highlight {
+          padding: 2px;
+          border-radius: 15px;
+          color: white;
+          font-weight: bold;
         }
         /* Works index*/
         .works {
@@ -134,8 +141,7 @@
         }
         .iconImg{
           align-self: flex-end;
-          padding-bottom: 25px;
-          padding-right: 25px;
+          padding: 25px;
           border-radius: 25px;
         }
 

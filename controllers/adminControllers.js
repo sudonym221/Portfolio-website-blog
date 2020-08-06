@@ -1,7 +1,7 @@
 const {Admin} = require('../models/admin.js');
 
 const get_admin_page = (req, res) => {
-    res.render('adminLogin.ejs', {title : 'Admin Login'})
+    res.render('admins/adminLogin.ejs', {title : 'Admin Login'})
 }
 
 const authAdmin = async (req, res) => {
@@ -15,7 +15,7 @@ const authAdmin = async (req, res) => {
         }
         var token = adminYes.generateAuthToken();
         res.cookie('token_admin', `${token}`, {domain: 'https://deepjyoti-portfolio.herokuapp.com/',secure: true, expires: new Date(Date.now() + 9000000), httpOnly: true })
-        res.render('admin.ejs', { title: 'Hi admin'});
+        res.render('admins/admin.ejs', { title: 'Hi admin'});
     }
     catch(e) {
         res.status(500).send()
@@ -23,7 +23,7 @@ const authAdmin = async (req, res) => {
 }
 
 const admin_reg= (req, res) => {
-    res.render('adminReg.ejs')
+    res.render('admins/adminReg.ejs')
 }
 
 const admin_save = (req, res) => {
