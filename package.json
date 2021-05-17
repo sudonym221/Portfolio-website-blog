@@ -1,7 +1,7 @@
 {
-  "name": "ninja",
+  "name": "portfolio_blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio website and blog",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -27,5 +27,13 @@
   "license": "ISC",
   "engines": {
     "node": "12.18.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudonym221/Portfolio-website-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudonym221/Portfolio-website-blog/issues"
+  },
+  "homepage": "https://github.com/sudonym221/Portfolio-website-blog#readme"
 }
