@@ -13,11 +13,14 @@ const workRouter = require('./routes/workRoutes.js');
 const adminRouter = require('./routes/adminRoutes.js');
 
 // Connect to mongodb
-const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0isbr.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-//const mongoURI = 'mongodb://127.0.0.1:27017/Deepjyoti_Chetia';
+//const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0isbr.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const mongoURI = 'mongodb://127.0.0.1:27017/Deepjyoti_Chetia';
 
 mongoose.connect(mongoURI, {useNewUrlParser : true, useUnifiedTopology : true} )
-    .then( result => app.listen(process.env.PORT))
+    .then( result => {
+                      app.listen(process.env.PORT)
+                      console.log(`Listening on ${process.env.PORT}`)
+                    })
     .catch( (err) => console.log(err));
 
 // register view engine
